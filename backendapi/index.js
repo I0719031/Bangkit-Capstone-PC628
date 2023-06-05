@@ -5,7 +5,7 @@ const port=8080;
 app.use(express.json())
 
 app.get('/', (req, res) =>{
-    res.json("Hello Leckers app")
+    res.json("Hello Leckers.com app")
 });
 
 app.get('/tshirt/:id', async (req, res) => {
