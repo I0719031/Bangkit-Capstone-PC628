@@ -2,8 +2,8 @@
 
 # “ Lecker” Your Personal Recipe Assistant
 
-<p align=“center”>
-<img width=“460” height=“300"src=”https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/contoh Logo lecker 1.0.png">
+<p align="center">
+<img width="460" height="300"src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/contoh Logo lecker 1.0.png">
 </p>
 
 # Summary/Abstract
