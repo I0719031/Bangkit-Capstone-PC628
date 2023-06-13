@@ -26,3 +26,12 @@ Project Scope :
 3. Develop a database of recipes that match the identified ingredients and recommend Indonesian cuisines
 4. It is expected that the application can provide a list of foods that contain the identified ingredients through training data from machine learning
 
+### Team Members
+|            Member           | Student ID |        Path        |                    Role                    |                                                       Contacts                                                           |
+| :-------------------------: | :--------: | :----------------: | :----------------------------------------: | :-----------------------------------------------------------------------------------------------------------------:      |
+|        Hanif Wisti Julitama | M340DSX0317|  Machine Learning  | Project Manager, Machine Learning Engineer |           [LinkedIn](https://www.linkedin.com/in/hanif-wisti-julitama/) or [Github](https://github.com/I0719031)         |
+|      Wiga Audi Prasetyo     | M281DSX1864|  Machine Learning  |          Machine Learning Engineer         |   [LinkedIn](https://www.linkedin.com/in/wigaaudi/) or [Github](https://github.com/wigaaudi)                             |
+|     Muhammad Rayhan Rizaldi | M137DSX2946| Machine Learning   |          Android Mobile Developer          |             [LinkedIn](https://www.linkedin.com/in/rayhan-rizaldi/) or [Github](https://github.com/RayhanRizaldi)        |
+|      Muhammad Ainul Fikri   | C043DSX2954|  Cloud Computing   |          DevOps Engineer                   |    [LinkedIn](https://www.linkedin.com/in/muhammad-ainul-fikri-990388262/) or [Github](https://github.com/AliceMochi)    |
+|     Fira Dania Abdullah     | C311DSY1352|  Cloud Computing   |          DevOps Engineer                   |            [LinkedIn](https://www.linkedin.com/in/fira-dania-abdullah-898174265/) or [Github](https://github.com/frdnia) |
+| Ariel Matius Surbakti       | A350DSX3374| Mobile Development |  Android Mobile Developer,Designer         | [LinkedIn](https://www.linkedin.com/in/arielmatius/) or [Github](https://github.com/MattRiel)                            |
