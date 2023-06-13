@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Lecker App</string>
+    <string name="app">Lecker</string>
+
+    <string name="tv_nama">Nama Users</string>
+    <string name="tv_user_name">Nama Users</string>
+    <string name="tv_id">Id Users</string>
+    <string name="tv_followers">Followers 5</string>
+    <string name="tv_following">Following 7</string>
+    <string name="search">Search</string>
+    <string name="users">Ariel Matius</string>
+    <string name="follower_label">Follower</string>
+    <string name="following_label">Following</string>
+    <string name="detail_user">Detail User</string>
+    <string name="Share">Share</string>
+    <string name="Followers">17</string>
+    <string name="favorite_text">Favorite</string>
+    <string name="favorite">Favorite</string>
+</resources>
