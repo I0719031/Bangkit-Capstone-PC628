@@ -35,3 +35,8 @@ Project Scope :
 |      Muhammad Ainul Fikri   | C043DSX2954|  Cloud Computing   |          DevOps Engineer                   |    [LinkedIn](https://www.linkedin.com/in/muhammad-ainul-fikri-990388262/) or [Github](https://github.com/AliceMochi)    |
 |     Fira Dania Abdullah     | C311DSY1352|  Cloud Computing   |          DevOps Engineer                   |            [LinkedIn](https://www.linkedin.com/in/fira-dania-abdullah-898174265/) or [Github](https://github.com/frdnia) |
 | Ariel Matius Surbakti       | A350DSX3374| Mobile Development |  Android Mobile Developer,Designer         | [LinkedIn](https://www.linkedin.com/in/arielmatius/) or [Github](https://github.com/MattRiel)                            |
+
+### Schedule
+<p align="center">
+<img style="width:30vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/schedules.png">
+</p>
