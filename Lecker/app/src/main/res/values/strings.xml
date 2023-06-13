@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Lecker App</string>
     <string name="app">Lecker</string>
+    <string name="capstone_id">PC628</string>
 
     <string name="tv_nama">Nama Users</string>
     <string name="tv_user_name">Nama Users</string>
