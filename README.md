@@ -38,5 +38,5 @@ Project Scope :
 
 ### Schedule
 <p align="center">
-<img style="width:30vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/schedules.png">
+<img style="width:60vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/jadwal.png">
 </p>
