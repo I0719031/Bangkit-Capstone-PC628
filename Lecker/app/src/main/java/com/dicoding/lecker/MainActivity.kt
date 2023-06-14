@@ -1,85 +1,73 @@
 package com.dicoding.lecker
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
+import android.widget.Button
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.lecker.adapter.UsersAdapter
-import com.dicoding.lecker.data.DataUser
-import com.dicoding.lecker.databinding.ActivityMainBinding
-import com.dicoding.lecker.viewmodel.MainViewModel
+import androidx.recyclerview.widget.RecyclerView
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var apiService: ApiService
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var recipeAdapter: RecipeAdapter
 
-    private lateinit var binding: ActivityMainBinding
-    private val mainViewModel by viewModels<MainViewModel>()
-    private lateinit var adapter : UsersAdapter
-
-    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
 
-        adapter = UsersAdapter()
-        adapter.notifyDataSetChanged()
+        // Initialize RecyclerView and its adapter
+        recyclerView = findViewById(R.id.recyclerView)
+        recipeAdapter = RecipeAdapter()
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = recipeAdapter
 
-        adapter.setOnitemClikCallback(object : UsersAdapter.OnItemClickCallback{
-            override fun onItemClicked(data: DataUser) {
-                Toast.makeText(this@MainActivity, "Opening "+data.login + " profile", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this@MainActivity, DetailUserActivity::class.java)
-                intent.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
-                startActivity(intent)
-            }
-        })
+        // Initialize Retrofit
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://leckerscapstone12-gjlu4leqjq-uc.a.run.app/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-        binding.apply {
-            rvReview.layoutManager = LinearLayoutManager(this@MainActivity)
-            rvReview.setHasFixedSize(true)
-            rvReview.adapter=adapter
+        // Create an instance of the ApiService
+        apiService = retrofit.create(ApiService::class.java)
 
-            btnSearch.setOnClickListener {
-                searchUser()
-            }
+        // Set click listener for the button to send the text
+        val btnSend: Button = findViewById(R.id.btnSend)
+        btnSend.setOnClickListener {
+            val editText: EditText = findViewById(R.id.editText)
+            val inputText = editText.text.toString()
 
-            etQuery.setOnKeyListener {view, i, keyEvent ->
-                if(keyEvent.action == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER){
-                    searchUser()
-                    return@setOnKeyListener true
+            // Create a JSON string with the input text
+            val json = "{\"Ingredient\":\"$inputText\"}"
+
+            // Create a RequestBody from the JSON string
+            val requestBody = RequestBody.create(MediaType.parse("application/json"), json)
+
+            // Make the API call
+            apiService.createPost(requestBody).enqueue(object : Callback<RecipeData> {
+                override fun onResponse(call: Call<RecipeData>, response: Response<RecipeData>) {
+                    if (response.isSuccessful) {
+                        val recipeData = response.body()
+                        if (recipeData != null) {
+                            recipeAdapter.updateData(recipeData.result)
+                        }
+                    } else {
+                        // Handle unsuccessful response
+                    }
                 }
-                return@setOnKeyListener false
-            }
-        }
-        mainViewModel.listUser.observe(this){
-            if(it != null){
-                adapter.setList(it)
-                showLoading(false)
-            }
-        }
-        mainViewModel.isLoading.observe(this) {
-            showLoading(it)
-        }
-    }
 
-    private fun searchUser(){
-        binding.apply {
-            val query = etQuery.text.toString()
-            if(query.isEmpty()) return
-            showLoading(true)
-            mainViewModel.SearchGithubUser(query)
-        }
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        if (isLoading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
+                override fun onFailure(call: Call<RecipeData>, t: Throwable) {
+                    // Handle failure
+                }
+            })
         }
     }
 }
+

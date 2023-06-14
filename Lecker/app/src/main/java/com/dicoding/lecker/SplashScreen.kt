@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 
+
 class SplashScreen : AppCompatActivity() {
 
     private val delay_num : Long = 1700
