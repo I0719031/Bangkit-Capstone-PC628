@@ -1,6 +1,11 @@
 package com.dicoding.lecker
 
+import RecipeAdapter
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +32,11 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recipeAdapter = RecipeAdapter()
         recyclerView.layoutManager = LinearLayoutManager(this)
+        // Add item decoration
+        val spacingInPixels = resources.getDimensionPixelSize(R.dimen.recycler_view_spacing)
+        recyclerView.addItemDecoration(SpaceItemDecoration(spacingInPixels))
+
+        recyclerView.adapter = recipeAdapter
         recyclerView.adapter = recipeAdapter
 
         // Initialize Retrofit
@@ -41,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         // Set click listener for the button to send the text
         val btnSend: Button = findViewById(R.id.btnSend)
         btnSend.setOnClickListener {
+            animateButton(btnSend)
             val editText: EditText = findViewById(R.id.editText)
             val inputText = editText.text.toString()
 
@@ -68,6 +79,18 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+    }
+
+    private fun animateButton(button: Button) {
+        val scaleX = ObjectAnimator.ofFloat(button, View.SCALE_X, 1f, 0.9f, 1f)
+        val scaleY = ObjectAnimator.ofFloat(button, View.SCALE_Y, 1f, 0.9f, 1f)
+        val alpha = ObjectAnimator.ofFloat(button, View.ALPHA, 1f, 0.5f, 1f)
+
+        val animatorSet = AnimatorSet()
+        animatorSet.duration = 1000
+        animatorSet.interpolator = AccelerateDecelerateInterpolator()
+        animatorSet.playTogether(scaleX, scaleY, alpha)
+        animatorSet.start()
     }
 }
 

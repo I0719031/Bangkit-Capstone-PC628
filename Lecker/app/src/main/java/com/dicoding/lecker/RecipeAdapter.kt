@@ -1,10 +1,10 @@
-package com.dicoding.lecker
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.dicoding.lecker.R
+import com.dicoding.lecker.Recipe
 
 class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
     private var recipeList: List<Recipe> = emptyList()
