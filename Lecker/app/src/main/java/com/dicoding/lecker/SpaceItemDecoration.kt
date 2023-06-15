@@ -3,10 +3,8 @@ package com.dicoding.lecker
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 
-
-class SpaceItemDecoration(private val space: Int) : ItemDecoration() {
+class SpaceItemDecoration(private val space: Int) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
