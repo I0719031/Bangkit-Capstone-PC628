@@ -1,17 +1,16 @@
+package com.dicoding.lecker
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.lecker.R
-import com.dicoding.lecker.Recipe
+import com.dicoding.lecker.databinding.ItemRecipeBinding
 
 class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
     private var recipeList: List<Recipe> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recipe, parent, false)
-        return RecipeViewHolder(view)
+        val binding = ItemRecipeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return RecipeViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
@@ -28,15 +27,12 @@ class RecipeAdapter : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class RecipeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val titleTextView: TextView = itemView.findViewById(R.id.tvTitle)
-        private val ingredientsTextView: TextView = itemView.findViewById(R.id.tvIngredients)
-        private val stepsTextView: TextView = itemView.findViewById(R.id.tvSteps)
+    inner class RecipeViewHolder(private val binding: ItemRecipeBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(recipe: Recipe) {
-            titleTextView.text = recipe.title
-            ingredientsTextView.text = recipe.ingredients
-            stepsTextView.text = recipe.steps
+            binding.tvTitle.text = recipe.title
+            binding.tvIngredients.text = recipe.ingredients
+            binding.tvSteps.text = recipe.steps
         }
     }
 }

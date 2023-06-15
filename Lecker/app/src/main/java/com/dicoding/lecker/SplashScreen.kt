@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-
+import com.dicoding.lecker.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity() {
+    private lateinit var binding: ActivitySplashScreenBinding
 
-    private val delay_num : Long = 1700
+    private val delay_num: Long = 1300
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.hide()
 
         val handler = Handler(Looper.getMainLooper())

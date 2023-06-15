@@ -1,16 +1,13 @@
 package com.dicoding.lecker
 
-import RecipeAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.dicoding.lecker.databinding.ActivityMainBinding
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -21,23 +18,22 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
     private lateinit var apiService: ApiService
-    private lateinit var recyclerView: RecyclerView
     private lateinit var recipeAdapter: RecipeAdapter
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Initialize RecyclerView and its adapter
-        recyclerView = findViewById(R.id.recyclerView)
         recipeAdapter = RecipeAdapter()
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
         // Add item decoration
         val spacingInPixels = resources.getDimensionPixelSize(R.dimen.recycler_view_spacing)
-        recyclerView.addItemDecoration(SpaceItemDecoration(spacingInPixels))
+        binding.recyclerView.addItemDecoration(SpaceItemDecoration(spacingInPixels))
 
-        recyclerView.adapter = recipeAdapter
-        recyclerView.adapter = recipeAdapter
+        binding.recyclerView.adapter = recipeAdapter
 
         // Initialize Retrofit
         val retrofit = Retrofit.Builder()
@@ -49,11 +45,9 @@ class MainActivity : AppCompatActivity() {
         apiService = retrofit.create(ApiService::class.java)
 
         // Set click listener for the button to send the text
-        val btnSend: Button = findViewById(R.id.btnSend)
-        btnSend.setOnClickListener {
-            animateButton(btnSend)
-            val editText: EditText = findViewById(R.id.editText)
-            val inputText = editText.text.toString()
+        binding.btnSend.setOnClickListener {
+            animateButton(binding.btnSend)
+            val inputText = binding.editText.text.toString()
 
             // Create a JSON string with the input text
             val json = "{\"Ingredient\":\"$inputText\"}"
@@ -81,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun animateButton(button: Button) {
+    private fun animateButton(button: View) {
         val scaleX = ObjectAnimator.ofFloat(button, View.SCALE_X, 1f, 0.9f, 1f)
         val scaleY = ObjectAnimator.ofFloat(button, View.SCALE_Y, 1f, 0.9f, 1f)
         val alpha = ObjectAnimator.ofFloat(button, View.ALPHA, 1f, 0.5f, 1f)
@@ -93,4 +87,3 @@ class MainActivity : AppCompatActivity() {
         animatorSet.start()
     }
 }
-
