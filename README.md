@@ -46,5 +46,5 @@ Project Scope :
 <img style="width:50vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/tampilangabungan_1.png">
 </p>
 <p align="center">
-<img style="width:50vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/tampilangabungan_2.png">
+<img style="width:50vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/gabung2.png">
 </p>
