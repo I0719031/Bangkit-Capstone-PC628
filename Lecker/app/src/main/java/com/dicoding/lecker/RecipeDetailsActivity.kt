@@ -15,16 +15,13 @@ class RecipeDetailsActivity : AppCompatActivity() {
         binding = ActivityRecipeDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Retrieve the recipe details from intent extras
         val recipeTitle = intent.getStringExtra("RECIPE_TITLE")
         val recipeIngredients = intent.getStringExtra("RECIPE_INGREDIENTS")
         val recipeSteps = intent.getStringExtra("RECIPE_STEPS")
 
-        // Format the recipe details
         val formattedIngredients = recipeIngredients?.let { formatIngredients(it) }
         val formattedSteps = recipeSteps?.let { formatSteps(it) }
 
-        // Populate the views with the formatted recipe details
         binding.tvRecipeTitle.text = recipeTitle
         binding.tvRecipeIngredients.text = formattedIngredients
         binding.tvRecipeSteps.text = formattedSteps
