@@ -40,3 +40,11 @@ Project Scope :
 <p align="center">
 <img style="width:60vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/jadwal.png">
 </p>
+
+### Screenshot
+<p align="center">
+<img style="width:50vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/tampilangabungan_1.png">
+</p>
+<p align="center">
+<img style="width:50vw" src="https://github.com/I0719031/Bangkit-Capstone-PC628/blob/main/images/tampilangabungan_2.png">
+</p>
